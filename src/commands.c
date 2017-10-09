@@ -10,11 +10,14 @@
 int do_cd(int argc, char** argv) {
   if (!validate_cd_argv(argc, argv))
 	return -1;
-
-
+	
+	int a;
 	int return_stat;
+	int len;
 	struct stat file_info;
 	mode_t file_mode;
+	len=strlen(argv[1]);
+	argv[1][len-1]='\0';
 
   
   if((return_stat=stat(argv[1],&file_info))==-1)
@@ -23,7 +26,7 @@ int do_cd(int argc, char** argv) {
 
   file_mode=file_info.st_mode;
   if (S_ISDIR(file_mode)) 
-	int a = chdir(argv[1]);
+  	 a = chdir(argv[1]);
 
   return 0;
 }
